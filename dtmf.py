@@ -35,11 +35,16 @@ while (True):
     waveFile.writeframes(b''.join(frames))
     waveFile.close()
 
-    #reading voice
+    # reading voice
     rate, data = wav.read('file.wav')
     # data is voice signal. its type is list(or numpy array)
 
-    print (len(data))
-    print (data)
+    # calculate fourier transform
+    complexFourierTransform = np.fft.fft(data)
+    absoluteFourierTransforn = []
+    for i in range(0, len(complexFourierTransform)):
+        absoluteFourierTransforn.append(int(abs(complexFourierTransform[i])))
+        
+    print (absoluteFourierTransforn)
 
 audio.terminate()
