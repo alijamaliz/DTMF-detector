@@ -37,7 +37,7 @@ FORMAT = pyaudio.paInt16 # format of sampling 16 bit int
 CHANNELS = 1 # number of channels it means number of sample in every sampling
 RATE = 20000 # number of sample in 1 second sampling
 CHUNK = 1024 # length of every chunk
-RECORD_SECONDS = 0.3 # time of recording in seconds
+RECORD_SECONDS = 0.4 # time of recording in seconds
 WAVE_OUTPUT_FILENAME = "file.wav" # file name
  
 audio = pyaudio.PyAudio()
@@ -77,7 +77,7 @@ while (True):
         FourierTransformOfData[i] = int(np.absolute(FourierTransformOfData[i]))
 
     # Calculate lower bound for filtering fourier trasform numbers
-    LowerBound = 10 * np.average(FourierTransformOfData)
+    LowerBound = 20 * np.average(FourierTransformOfData)
 
     # Filter fourier transform data (only select frequencies that X(jw) is greater than LowerBound)
     FilteredFrequencies = []
